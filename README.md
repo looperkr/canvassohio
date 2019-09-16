@@ -1,0 +1,1 @@
+This project uses Ohio voter registration and FEC donation data to determine regions with a large number of likely 2020 voters. Made for the Insight Data Science program.
