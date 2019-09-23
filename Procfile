@@ -1,1 +1,1 @@
-web: gunicorn web:app --log-file=-
+web: gunicorn python3 canvassohio/app.py --log-file=-
