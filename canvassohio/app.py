@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from flask import Flask, render_template, request, send_file, Response, redirect
 from wtforms import Form, TextAreaField, validators
 import geopandas as gpd
