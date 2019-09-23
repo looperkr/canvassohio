@@ -1,1 +1,1 @@
-web: python canvassohio/app.py
+web: python ./canvassohio/app.py
