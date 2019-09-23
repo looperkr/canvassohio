@@ -1,1 +1,1 @@
-web: gunicorn ./canvassohio/app:app
+web: gunicorn --chdir canvassohio app:app
