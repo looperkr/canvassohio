@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CanvassOhio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div>Select a state congressional district</div>
+    {% from "_formhelpers.html" import render_field %}
+    <form action="/" method="post">
+      <select name="districts" method="GET" action="/">
+	{% for key,value in districts %}
+	<option value="{{key}}" >{{key}}</option>
+	{% endfor %}
+      </select>
+      <input type="submit">
+    </form>
+    <br/> 
+    <br/> 
+    <img src="/static/ohio_map.png" width="600" height="500"/>
+    <br/>
+    <br/>
+    {% if data %}
+    <div>Best precinct to canvass in that district:{{ data }} </div>
+    {% endif %}
+  </body>
+</html>
+
