@@ -9,7 +9,6 @@
 *.root
 MC_histograms*
 data_histograms*
-*.txt
 cutflows
 c8d06ac9-d1dc-49b0-a94f-03aad1fdccee/
 Atlas*
