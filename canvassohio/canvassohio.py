@@ -22,9 +22,16 @@ oh_df = pd.concat([oh1_df,oh2_df,oh3_df,oh4_df])
 #oh_df = oh1_df #for debugging
 columns=list(oh_df) #list of column names
 
-grouped=oh_df.groupby('STATE_REPRESENTATIVE_DISTRICT')
-grouped['SOS_VOTERID'].count().plot.bar()
-plt.show()
+#grouped=oh_df.groupby('STATE_REPRESENTATIVE_DISTRICT')
+#grouped['SOS_VOTERID'].count().plot.bar()
+#plt.show()
 
-os.system('say done')
-print(oh_df.shape)
+grouped=oh_df.groupby(['STATE_REPRESENTATIVE_DISTRICT','PRECINCT_NAME'])
+g1 = grouped['GENERAL-11/08/2016'].count().reset_index()
+results_prec=g1.groupby(['STATE_REPRESENTATIVE_DISTRICT']).max()
+results_prec=results_prec.drop(columns=['GENERAL-11/08/2016'])
+results_prec.set_index('STATE_REPRESENTATIVE_DISTRICT',inplace=True)
+results_prec.to_dict()
+
+
+
