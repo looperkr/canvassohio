@@ -4,7 +4,7 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 import pickle
 
-with open('/Users/kristinalooper/WorkArea/insight/notebooks/precinct_dict.pickle', 'rb') as handle:
+with open('./canvassohio/static/precinct_dict.pickle', 'rb') as handle:
     districts_dic = pickle.load(handle)
     districts=districts_dic.items()
 
