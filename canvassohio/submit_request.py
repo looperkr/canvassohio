@@ -2,6 +2,7 @@ from os import listdir
 from os import system
 from os.path import isfile, join
 
+test="test"
 mypath = '/Volumes/FileStorage/Insight_data/Ohio_data/data_csv/'
 onlyfiles = ['addr_slice_80000_89999.csv','addr_slice_810000_819999.csv','addr_slice_820000_829999.csv','addr_slice_830000_839999.csv','addr_slice_840000_849999.csv','addr_slice_850000_859999.csv','addr_slice_860000_869999.csv','addr_slice_870000_879999.csv','addr_slice_880000_889999.csv','addr_slice_890000_899999.csv','addr_slice_900000_909999.csv',' addr_slice_90000_99999.csv']
 
