@@ -20,7 +20,7 @@ app = Flask(__name__, static_url_path='/static')
 def dropdown():
     if request.method == "POST":
         d = int(request.form.get('districts'))
-        return render_template('dropdown.html',districts=districts,data=districts_dic[d])
+        return render_template('dropdown.html',districts=districts,data=districts_dic[d],fname='district_'+str(d)+'.png')
     else:
         return render_template('dropdown.html',districts=districts)
 

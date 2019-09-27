@@ -15,13 +15,12 @@
       </select>
       <input type="submit">
     </form>
-    <br/> 
-    <br/> 
-    <img src="/static/ohio_map.png" width="600" height="500"/>
-    <br/>
     <br/>
     {% if data %}
     <div>Best precinct to canvass in that district:{{ data }} </div>
+    <img src="{{ url_for('static', filename=fname) }}" height="500"/>
+    {% else %}
+    <img src="/static/ohio_map.png" height="500"/>
     {% endif %}
   </body>
 </html>
