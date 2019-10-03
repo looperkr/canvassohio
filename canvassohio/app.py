@@ -10,6 +10,10 @@ with open('./canvassohio/static/precinct_dict.pickle', 'rb') as handle:
     districts_dic = pickle.load(handle)
     districts=districts_dic.items()
 
+with open('./canvassohio/static/results_dict.pickle','rb') as handle:
+    results_dic = pickle.load(handle)
+    results=results_dic.items()
+
 app = Flask(__name__, static_url_path='/static')
 
 @app.route('/',methods=['GET','POST'])
@@ -20,9 +24,9 @@ app = Flask(__name__, static_url_path='/static')
 def dropdown():
     if request.method == "POST":
         d = int(request.form.get('districts'))
-        return render_template('dropdown.html',districts=districts,data=districts_dic[d],fname='district_'+str(d)+'.png')
+        return render_template('dropdown.html',districts=results,data0=results_dic[d][0],data1=results_dic[d][1],data2=results_dic[d][2],fname='district_'+str(d)+'.png')
     else:
-        return render_template('dropdown.html',districts=districts)
+        return render_template('dropdown.html',districts=results)
 
 
 #@app.route('/plot.png', methods=['GET'])

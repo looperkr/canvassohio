@@ -16,8 +16,8 @@
       <input type="submit">
     </form>
     <br/>
-    {% if data %}
-    <div>Best precinct to canvass in that district:{{ data }} </div>
+    {% if data0 %}
+    <div>Best precincts to canvass in that district:{{ data0 }}, {{data1}}, {{data2}} </div>
     <img src="{{ url_for('static', filename=fname) }}" height="500"/>
     {% else %}
     <img src="/static/Ohio_map.png" height="500"/>
