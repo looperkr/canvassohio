@@ -14,6 +14,9 @@ with open('./canvassohio/static/results_dict.pickle','rb') as handle:
     results_dic = pickle.load(handle)
     results=results_dic.items()
 
+with open('./canvassohio/static/party_dict.pickle','rb') as handle:
+    lean_dic = pickle.load(handle)
+
 app = Flask(__name__, static_url_path='/static')
 
 @app.route('/',methods=['GET','POST'])
@@ -24,7 +27,13 @@ app = Flask(__name__, static_url_path='/static')
 def dropdown():
     if request.method == "POST":
         d = int(request.form.get('districts'))
-        return render_template('dropdown.html',districts=results,data0=results_dic[d][0],data1=results_dic[d][1],data2=results_dic[d][2],fname='district_'+str(d)+'.png')
+        data0=results_dic[d][0]
+        data1=results_dic[d][1]
+        data2=results_dic[d][2]
+        lean0=lean_dic[data0]
+        lean1=lean_dic[data1]
+        lean2=lean_dic[data2]
+        return render_template('dropdown.html',districts=results,data=districts_dic[d],data0=data0,data1=data1,data2=data2,lean0=lean0,lean1=lean0,lean2=lean2,fname='district_'+str(d)+'.png')
     else:
         return render_template('dropdown.html',districts=results)
 
