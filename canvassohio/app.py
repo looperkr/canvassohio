@@ -35,7 +35,7 @@ def dropdown():
         lean0=lean_dic[data0]
         lean1=lean_dic[data1]
         lean2=lean_dic[data2]
-        return render_template('dropdown.html',districts=results,data=districts_dic[d],data0=data0,data1=data1,data2=data2,lean0=lean0,lean1=lean0,lean2=lean2,fname='district_'+str(d)+'.png')
+        return render_template('dropdown.html',districts=results,data=districts_dic[d],data0=data0,data1=data1,data2=data2,lean0=lean0,lean1=lean0,lean2=lean2,fname='district_'+str(d)+'.png',key=d)
     else:
         return render_template('dropdown.html',districts=results)
 

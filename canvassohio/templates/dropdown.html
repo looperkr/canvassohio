@@ -1,27 +1,43 @@
 <!doctype html>
 <html>
-  <head>
-    <title>CanvassOhio</title>
-    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='style.css') }}">
-  </head>
-  <body>
-    <h1>Select a state congressional district</h1>
-    {% from "_formhelpers.html" import render_field %}
-    <form action="/" method="post">
-      <select name="districts" method="GET" action="/">
-	{% for key,value in districts %}
-	<option value="{{key}}" >District {{key}}</option>
-	{% endfor %}
-      </select>
-      <input type="submit">
-    </form>
-    <br/>
-    {% if data %}
-    <div>Best precincts to canvass in that district:{{ data0 }} (leans {{lean0}}), {{data1}} (leans {{lean1}}), {{data2}} (leans {{lean2}}) </div>
-    <img src="{{ url_for('static', filename=fname) }}" height="500"/>
-    {% else %}
-    <img src="/static/Ohio_map.png" height="500"/>
-    {% endif %}
-  </body>
+<head>
+  <title>CanvassOhio</title>
+  <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class = "header">
+  <h1>CanvassOhio</h1>
+  <h2> Connecting grassroots groups in Ohio to likely voters</h2>
+</div>
+
+<div class = "main">
+<p> Select a state congressional district: </p>
+{% from "_formhelpers.html" import render_field %}
+<form action="/" method="post">
+  <select name="districts" method="GET" action="/">
+    {% for key,value in districts %}
+    <option value="{{key}}" >District {{key}}</option>
+    {% endfor %}
+  </select>
+  <input type="submit">
+</form>
+<br/>
+{% if data %}
+<p>Best precincts to canvass in District {{ key }}:</p>
+
+<p>{{ data0 }} (leans {{lean0}}) {{data1}} (leans {{lean1}}), {{data2}} (leans {{lean2}}) </p>
+<img src="{{ url_for('static', filename=fname) }}" height="500" class="center">
+{% else %}
+<img src="/static/Ohio_map.png" height="500" class="center">
+{% endif %}
+</div>
+
+<div class = "footer">
+Precinct shapefiles courtesy of the Metric Geometry and Gerrymandering Group. Find the github repository <a href="https://github.com/mggg/ohio-precincts">here</a>. </br>
+Github repository for this application can be found <a href="https://github.com/looperkr/canvassohio">here</a>.
+</div>
+
+</body>
 </html>
 
