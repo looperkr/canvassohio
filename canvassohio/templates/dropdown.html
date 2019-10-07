@@ -12,7 +12,7 @@
 </div>
 
 <div class = "main">
-<p> Select a state congressional district: </p>
+<p> Select a state congressional district to find precincts with the most likely voters: </p>
 {% from "_formhelpers.html" import render_field %}
 <form action="/" method="post">
   <select name="districts" method="GET" action="/">
@@ -27,9 +27,12 @@
 <p>Best precincts to canvass in District {{ key }}:</p>
 
 <p>{{ data0 }} (leans {{lean0}}), {{data1}} (leans {{lean1}}), {{data2}} (leans {{lean2}}) </p>
+{% if 'SUGARCREEK 156' == data2 %}
+<p> Sugarcreek 156 is unavailable from shape file source. </p>
+{% endif %}
 <img src="{{ url_for('static', filename=fname) }}" height="500" class="center">
 {% else %}
-<img src="/static/Ohio_map.png" height="500" class="center">
+<img src="/static/ohio_with_map.png" height="500" class="center">
 {% endif %}
 </div>
 
