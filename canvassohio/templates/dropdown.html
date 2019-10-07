@@ -2,15 +2,15 @@
 <html>
   <head>
     <title>CanvassOhio</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <div>Select a state congressional district</div>
+    <h1>Select a state congressional district</h1>
     {% from "_formhelpers.html" import render_field %}
     <form action="/" method="post">
       <select name="districts" method="GET" action="/">
 	{% for key,value in districts %}
-	<option value="{{key}}" >{{key}}</option>
+	<option value="{{key}}" >District {{key}}</option>
 	{% endfor %}
       </select>
       <input type="submit">

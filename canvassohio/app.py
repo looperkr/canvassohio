@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
-from flask import Flask, render_template, request, send_file, Response, redirect
+from flask import Flask, render_template, request, send_file, Response, redirect, url_for
 from wtforms import Form, TextAreaField, validators
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import pickle
+import os
 
 with open('./canvassohio/static/precinct_dict.pickle', 'rb') as handle:
     districts_dic = pickle.load(handle)
@@ -18,13 +19,14 @@ with open('./canvassohio/static/party_dict.pickle','rb') as handle:
     lean_dic = pickle.load(handle)
 
 app = Flask(__name__, static_url_path='/static')
-
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 @app.route('/',methods=['GET','POST'])
 #def dropdown():
 #    districts = [1,2,3]
 #    return render_template('dropdown.html',districts=districts)
 
 def dropdown():
+    print(os.getcwd())
     if request.method == "POST":
         d = int(request.form.get('districts'))
         data0=results_dic[d][0]
@@ -37,13 +39,13 @@ def dropdown():
     else:
         return render_template('dropdown.html',districts=results)
 
-
-#@app.route('/plot.png', methods=['GET'])
-#def district_map():
-#    fig=draw_map()
-#    output = io.BytesIO()
-#    FigureCanvas(fig).print_png(output)
-#    return Response(output.getvalue(), mimetype='image/png')
+#Following logic from user The Internet on stackexchange: https://stackoverflow.com/a/13798135
+#Sets cached copy to immediately expire
+@app.after_request
+def html_header(response):
+    response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
+    response.headers['Cache-Control'] = 'public, max-age=0'
+    return response
 
 if __name__ == '__main__':
     app.run(debug = True)
