@@ -9,7 +9,7 @@ WTForms==2.2.1
 seaborn==0.9.0
 Cython==0.29.13
 pyOpenSSL==19.0.0
-cryptography==2.7
+cryptography==3.2
 protobuf==3.9.1
 ipaddr==2.2.0
 lxml==4.6.3
