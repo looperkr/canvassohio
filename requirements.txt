@@ -12,7 +12,7 @@ pyOpenSSL==19.0.0
 cryptography==3.3.2
 protobuf==3.9.1
 ipaddr==2.2.0
-lxml==4.6.3
+lxml==4.6.5
 ordereddict==1.1
 wincertstore==0.2
 gunicorn==19.9.0
